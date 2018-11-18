@@ -1,0 +1,2 @@
+language: powershell-http
+fprocess: pwsh server.ps1
