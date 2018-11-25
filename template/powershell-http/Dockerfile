@@ -1,6 +1,6 @@
-FROM microsoft/powershell:ubuntu16.04
+FROM microsoft/powershell:ubuntu-xenial
 
-RUN curl -sSLf https://github.com/openfaas-incubator/of-watchdog/releases/download/0.4.2/of-watchdog > /usr/bin/fwatchdog \
+RUN curl -sSLf https://github.com/openfaas-incubator/of-watchdog/releases/download/0.4.5/of-watchdog > /usr/bin/fwatchdog \
     && chmod +x /usr/bin/fwatchdog
 WORKDIR /root/
 
