@@ -1,6 +1,10 @@
-# Rename input for better readability
-$funcInput = $args
-$output = "Hello! Your input was: " + $funcInput
+Param(
+  [Parameter(Mandatory=$true)]
+  [FunctionContext]$fnContext,
+  [Parameter(Mandatory=$true)]
+  [FunctionResponse]$fnResponse
+)
 
-# Must provide an output variable for the main process to return
-$output
+$output = "Hello! Your input was: " + $fnContext.Body
+
+$fnResponse.Body = $output
