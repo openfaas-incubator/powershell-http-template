@@ -1,8 +1,11 @@
 FROM microsoft/powershell:ubuntu-xenial
 
-RUN curl -sSLf https://github.com/openfaas-incubator/of-watchdog/releases/download/0.4.5/of-watchdog > /usr/bin/fwatchdog \
-    && chmod +x /usr/bin/fwatchdog
-WORKDIR /root/
+RUN apt-get update \
+    && apt-get install -y curl \
+    && curl -sSLf https://github.com/openfaas-incubator/of-watchdog/releases/download/0.4.5/of-watchdog > /usr/bin/fwatchdog \
+    && chmod +x /usr/bin/fwatchdog \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY server.ps1 server.ps1
 
