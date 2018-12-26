@@ -1,4 +1,5 @@
-Param(
+function Handler {
+  Param(
   [Parameter(Mandatory=$true)]
   [FunctionContext]$fnContext,
   [Parameter(Mandatory=$true)]
@@ -8,3 +9,5 @@ Param(
 $output = "Hello! Your input was: " + $fnContext.Body
 
 $fnResponse.Body = $output
+  
+}

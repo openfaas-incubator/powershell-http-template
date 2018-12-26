@@ -19,6 +19,8 @@ $listener = New-Object System.Net.HttpListener
 $listener.Prefixes.Add("http://*:8081/")
 $listener.Start()
 
+. "./function/handler.ps1"
+
 do {
     $context = $listener.GetContext()
     $response = $context.Response
@@ -40,7 +42,7 @@ do {
     $fnResponse = [FunctionResponse]::new()
     $fnResponse.Headers = [System.Net.WebHeaderCollection]::new()
     try {
-        . .\function\handler.ps1 -fnContext $fnContext -fnResponse $fnResponse
+        Handler -fnContext $fnContext -fnResponse $fnResponse
 
         $Content = [System.Text.Encoding]::UTF8.GetBytes($fnResponse.Body)
         $response.StatusCode = $(If ($fnResponse.Status) {$fnResponse.Status} Else {200}) #default to 200 response if not set
