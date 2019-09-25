@@ -1,11 +1,9 @@
-FROM microsoft/powershell:ubuntu-xenial
+FROM openfaas/classic-watchdog:0.18.0 as watchdog
 
-RUN apt-get update \
-    && apt-get install -y curl \
-    && curl -sSLf https://github.com/openfaas-incubator/of-watchdog/releases/download/0.4.5/of-watchdog > /usr/bin/fwatchdog \
-    && chmod +x /usr/bin/fwatchdog \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+FROM microsoft/powershell:ubuntu-xenial as ship
+
+COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
+RUN chmod +x /usr/bin/fwatchdog
 
 COPY server.ps1 server.ps1
 
