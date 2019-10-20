@@ -4,10 +4,10 @@ function Handler {
   [FunctionContext]$fnContext,
   [Parameter(Mandatory=$true)]
   [FunctionResponse]$fnResponse
-)
+  )
 
-$output = "Hello! Your input was: " + $fnContext.Body
+  $output = "Hello! Your input was: " + $fnContext.Body
 
-$fnResponse.Body = $output
+  $fnResponse.Body = $output
   
 }

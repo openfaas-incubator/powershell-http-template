@@ -16,7 +16,7 @@ Class FunctionResponse{
 }
 
 $listener = New-Object System.Net.HttpListener
-$listener.Prefixes.Add("http://*:8081/")
+$listener.Prefixes.Add("http://*:8082/")
 $listener.Start()
 
 . "./function/handler.ps1"
