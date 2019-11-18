@@ -25,7 +25,7 @@ You can create or scaffold a new function using the [OpenFaaS CLI](https://githu
 $ export USERNAME=alexellisuk
 
 $ faas template pull https://github.com/openfaas-incubator/powershell-http-template
-$ faas new --lang powershell-http-template <fn-name> --prefix="${USERNAME}"
+$ faas new --lang powershell-http <fn-name> --prefix="${USERNAME}"
 ```
 
 Once you've written your code you can run `faas-cli build` to create a local Docker image, then `faas-cli push` to transfer it to your registry.
